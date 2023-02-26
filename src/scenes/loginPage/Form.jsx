@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
+import FilePicker from "components/FilePicker";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -57,10 +58,12 @@ const Form = () => {
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
+    console.log("values here :-", values);
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
     }
+
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
@@ -80,11 +83,14 @@ const Form = () => {
 
   const login = async (values, onSubmitProps) => {
     //http://localhost:3001
-    const loggedInResponse = await fetch("https://yar-scial-server.herokuapp.com/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
+    const loggedInResponse = await fetch(
+      "https://yar-scial-server.herokuapp.com/auth/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }
+    );
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
     if (loggedIn) {
@@ -100,6 +106,7 @@ const Form = () => {
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);
+    console.log("here");
     if (isRegister) await register(values, onSubmitProps);
   };
 
@@ -206,6 +213,27 @@ const Form = () => {
                       </Box>
                     )}
                   </Dropzone>
+                  {/* <Button
+                    gridColumn="span 4"
+                    border={`1px solid ${palette.neutral.medium}`}
+                    borderRadius="5px"
+                    p="1rem"
+                    sx={{ "&:hover": { cursor: "pointer" } }}
+                    onClick={() => setShowPicker(!showPicker)}
+                  >
+                    {uploadDone && <FlexBetween><Typography>{
+                      picturePath
+            
+                    
+                    }</Typography></FlexBetween> || <FlexBetween><Typography>Add Picture Here</Typography></FlexBetween>}
+                  </Button>
+                  {showPicker && (
+                    <FilePicker
+                      setShowPicker={setShowPicker}
+                      setUploadDone={setUploadDone}
+                      setPicturePath={setPicturePath}
+                    ></FilePicker>
+                  )} */}
                 </Box>
               </>
             )}

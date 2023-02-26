@@ -20,6 +20,7 @@ const AdvertWidget = () => {
         width="100%"
         height="auto"
         alt="advert"
+        crossOrigin="anonymous"
         src="https://yar-scial-server.herokuapp.com/assets/info4.jpeg"
         style={{ borderRadius: "0.75", margin: "0.75rem 0" }}
       />

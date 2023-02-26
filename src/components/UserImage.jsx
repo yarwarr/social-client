@@ -1,6 +1,8 @@
 import { Box } from "@mui/material";
 
 const UserImage = ({ image, size = "60px" }) => {
+  console.log("https://yar-scial-server.herokuapp.com/assets/" + image);
+  const immg = "https://yar-scial-server.herokuapp.com/assets/" + image;
   return (
     <Box width={size} height={size}>
       <img
@@ -8,7 +10,8 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`https://yar-scial-server.herokuapp.com/assets/${image}`}
+        crossOrigin="anonymous"
+        src={immg}
       />
     </Box>
   );

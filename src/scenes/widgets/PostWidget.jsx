@@ -67,6 +67,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
+          crossOrigin="anonymous"
           src={`https://yar-scial-server.herokuapp.com/assets/${picturePath}`}
         />
       )}
