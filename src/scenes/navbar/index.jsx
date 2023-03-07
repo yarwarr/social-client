@@ -57,7 +57,7 @@ const NavBar = () => {
             },
           }}
         >
-          Sociopedia
+          SocialMediaApp
         </Typography>
         {isNonMobileScreen && (
           <FlexBetween
@@ -84,7 +84,7 @@ const NavBar = () => {
             )}
           </IconButton>
           <IconButton onClick={() => navigate("/chat")}>
-          <Message sx={{ fontSize: "25" }} />
+            <Message sx={{ fontSize: "25" }} />
           </IconButton>
           <Notifications sx={{ fontSize: "25" }} />
           <Help sx={{ fontSize: "25" }} />
