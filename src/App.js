@@ -8,7 +8,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "theme";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+import ChatPage from "scenes/chatPage";
 function App() {
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
@@ -23,6 +23,10 @@ function App() {
             <Route
               path="/home"
               element={isAuth ? <HomePage /> : <Navigate to="/" />}
+            />
+            <Route
+              path='/chat'
+              element={isAuth ? <ChatPage /> : <Navigate to="/" />}
             />
             <Route
               path="/profile/:userId"

@@ -15,7 +15,6 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
-import FilePicker from "components/FilePicker";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -58,7 +57,7 @@ const Form = () => {
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
-    console.log("values here :-", values);
+
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
@@ -106,7 +105,7 @@ const Form = () => {
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);
-    console.log("here");
+
     if (isRegister) await register(values, onSubmitProps);
   };
 
